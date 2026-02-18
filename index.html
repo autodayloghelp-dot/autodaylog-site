@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>のぶの - Links</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-hover: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8e6e3;
+    --text-sub: #8a8680;
+    --accent: #c4a882;
+    --accent-glow: rgba(196, 168, 130, 0.15);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Zen Kaku Gothic New', 'Outfit', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  /* Ambient background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(196, 168, 130, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(100, 120, 160, 0.04) 0%, transparent 50%);
+    animation: drift 20s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(2%, -1%) rotate(1deg); }
+    66% { transform: translate(-1%, 2%) rotate(-0.5deg); }
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 420px;
+    padding: 48px 24px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Profile */
+  .profile {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s ease-out both;
+  }
+
+  .avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #7a6f63);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: var(--bg);
+    letter-spacing: -2px;
+    box-shadow: 0 0 40px var(--accent-glow);
+  }
+
+  .name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .bio {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+  }
+
+  /* Links */
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 18px 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    animation: fadeUp 0.8s ease-out both;
+  }
+
+  .link-card:nth-child(1) { animation-delay: 0.15s; }
+  .link-card:nth-child(2) { animation-delay: 0.25s; }
+  .link-card:nth-child(3) { animation-delay: 0.35s; }
+  .link-card:nth-child(4) { animation-delay: 0.45s; }
+
+  .link-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, var(--accent-glow));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .link-card:hover {
+    background: var(--surface-hover);
+    border-color: rgba(196, 168, 130, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .link-card:hover::before {
+    opacity: 1;
+  }
+
+  .link-icon {
+    position: relative;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .link-icon.x { background: rgba(255, 255, 255, 0.08); }
+  .link-icon.note { background: rgba(65, 195, 110, 0.12); }
+  .link-icon.standfm { background: rgba(252, 185, 44, 0.12); }
+  .link-icon.tiktok { background: rgba(255, 0, 80, 0.1); }
+
+  .link-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .link-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .link-desc {
+    font-size: 11px;
+    color: var(--text-sub);
+    letter-spacing: 0.03em;
+  }
+
+  .link-arrow {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    color: var(--text-sub);
+    font-size: 14px;
+    transition: transform 0.3s, color 0.3s;
+  }
+
+  .link-card:hover .link-arrow {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    text-align: center;
+    animation: fadeUp 0.8s ease-out 0.6s both;
+  }
+
+  .footer-line {
+    width: 32px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto 16px;
+  }
+
+  .footer-text {
+    font-size: 11px;
+    color: var(--text-sub);
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* SVG icons */
+  .link-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  .link-icon.x svg { color: #e7e7e7; }
+  .link-icon.note svg { color: #41c36e; }
+  .link-icon.standfm svg { color: #fcb92c; }
+  .link-icon.tiktok svg { color: #ff0050; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="profile">
+    <div class="avatar">N</div>
+    <div class="name">のぶの</div>
+    <div class="bio">日常をデータに、データを洞察に。</div>
+  </div>
+
+  <div class="links">
+    <!-- X (Twitter) -->
+    <a href="#" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon x">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-title">X (Twitter)</span>
+        <span class="link-desc">日々の気づき・つぶやき</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <!-- note -->
+    <a href="#" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon note">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-1 14H6v-1.5h12V17zm0-3.5H6V12h12v1.5zm0-3.5H6V8.5h12V10z" fill-rule="evenodd"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-title">note</span>
+        <span class="link-desc">記事・コラム</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <!-- スタエフ -->
+    <a href="#" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon standfm">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l7 4.5-7 4.5z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-title">stand.fm</span>
+        <span class="link-desc">音声配信</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <!-- TikTok -->
+    <a href="#" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon tiktok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0011.14 4.17V12.6a8.22 8.22 0 005.3 1.93V11.1a4.85 4.85 0 01-3.77-1.73V6.69h3.77z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-title">TikTok</span>
+        <span class="link-desc">ショート動画</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-text">© のぶの</div>
+  </div>
+</div>
+
+</body>
+</html>
