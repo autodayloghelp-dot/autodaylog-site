@@ -10,14 +10,14 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #0a0a0f;
-    --surface: rgba(255, 255, 255, 0.04);
-    --surface-hover: rgba(255, 255, 255, 0.08);
-    --border: rgba(255, 255, 255, 0.08);
-    --text: #e8e6e3;
-    --text-sub: #8a8680;
-    --accent: #c4a882;
-    --accent-glow: rgba(196, 168, 130, 0.15);
+    --bg: #f5f4f0;
+    --surface: rgba(0, 0, 0, 0.04);
+    --surface-hover: rgba(0, 0, 0, 0.08);
+    --border: rgba(0, 0, 0, 0.08);
+    --text: #1a1a1a;
+    --text-sub: #6b6560;
+    --accent: #8a6f4e;
+    --accent-glow: rgba(138, 111, 78, 0.15);
   }
 
   body {
@@ -40,8 +40,8 @@
     width: 200%;
     height: 200%;
     background:
-      radial-gradient(ellipse at 30% 20%, rgba(196, 168, 130, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 80%, rgba(100, 120, 160, 0.04) 0%, transparent 50%);
+      radial-gradient(ellipse at 30% 20%, rgba(138, 111, 78, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(100, 120, 160, 0.05) 0%, transparent 50%);
     animation: drift 20s ease-in-out infinite;
     z-index: 0;
   }
@@ -84,17 +84,10 @@
     width: 88px;
     height: 88px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #7a6f63);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin: 0 auto 20px;
-    font-size: 36px;
-    font-weight: 700;
-    font-family: 'Outfit', sans-serif;
-    color: var(--bg);
-    letter-spacing: -2px;
+    object-fit: cover;
     box-shadow: 0 0 40px var(--accent-glow);
+    display: block;
   }
 
   .name {
@@ -253,7 +246,7 @@
     fill: currentColor;
   }
 
-  .link-icon.x svg { color: #e7e7e7; }
+  .link-icon.x svg { color: #1a1a1a; }
   .link-icon.note svg { color: #41c36e; }
   .link-icon.standfm svg { color: #fcb92c; }
   .link-icon.tiktok svg { color: #ff0050; }
@@ -263,7 +256,7 @@
 
 <div class="container">
   <div class="profile">
-    <div class="avatar">N</div>
+    <img class="avatar" src="/assets/IMG_2102.jpeg" alt="のぶの">
     <div class="name">のぶの</div>
     <div class="bio">日常をデータに、データを洞察に。</div>
   </div>
